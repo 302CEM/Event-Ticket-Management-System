@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Event Ticket Management System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style type="text/css">
+
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 800px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #000000;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Century Gothic;
+	}
+
+
+header{
+	background-color: #000000;
+	height: 15vh;
+	}	
+
+
+ul {
+   float:right;
+   list-style-type: none;
+   margin-top: 25px;
+  }
+
+ul li {
+	 display:inline-block;
+	 margin-right: 40px;
+	 }
+
+ul li a {
+	    text-decoration:none;
+	    color:rgba(146,139,139);
+	    padding: 5px 0.2px;
+	    transition: 0.5s ease;
+		}
+
+ul li a:hover {
+		  color:#ffffff;
+		  border-bottom: 2px solid #ff0033;
+		}
+
+ul li a.currentpage {
+		  color:#ffffff;
+		  border-bottom: 2px solid #ff0033;
+		  }				
+
+.logo img{
+	   float: left;
+	   position: absolute;
+	   top: 5px;
+	   left: 2px;
+	   }
+
+.main {
+	max-width: 1200px;
+	margin: auto;
+	}
+
+main{
+	background-color: #BAB6B6;
+	}
+
+
+
+#Capraharcus {
+             background-color: #000000;
+          }
+
+
+#copyrightthing {
+                 float:left;
+                 margin-left:20px;
+                }
+
+
+
+
+#facebookid {
+                float:right;
+                margin-right:75px;
+                 }
+
+#instagramid {
+               float:right;
+               margin-right:50px;
+             }
+
+
+#twitterid {
+            float:right;
+            margin-right:50px;
+          }
+
+
+
+#emailid {
+          float:right;
+          margin-right:50px;
+         }
+
+
+  </style>
+  <header>
+  	<div class="main">
+  		<div class="logo">
+  			<img src="Logo.jpg" alt="logo" width="150" height="80" />
+  		</div>
+  		<ul>	
+  		 <li><a class="file:///C:/Users/User/Desktop/HTML/Event%20Ticket%20Management%20System/HomePage.html" href="homepage.html">HOME</a></li>
+  		 <li><a href="file:///C:/Users/User/Desktop/HTML/Event%20Ticket%20Management%20System/Event.html">EVENTS</a></li>
+  		 <li><a href="currentpage">BOOKING TICKET</a></li>
+  		 <li><a href="file:///C:/Users/User/Desktop/HTML/Event%20Ticket%20Management%20System/Contact.html">CONTACT US</a></li>
+  		 <li><font color="white"><b>|</b></font></li>
+  		 <li><a href="file:///C:/Users/User/Desktop/HTML/Event%20Ticket%20Management%20System/Login.html">LOGIN/SIGNUP</a></li>
+  		</ul>
+  	</div>
+
+</header>
+
+<main>
+
+
+
+
+</main>
+
+<footer id="Capraharcus">
+  <br>
+<p id="copyrightthing"><font color="white">Jcar &copy; Copyright 2020. All rights reserved.</font></p>
+<a href="http://www.facebook.com"><img id="facebookid" src="facebooklogo.png" width="25" height="22"></a><a href="http://www.instagram.com"><img id="instagramid" src="instagramlogo.png" width="25" height="22"></a><a href="http://www.twitter.com"><img id="twitterid" src="twitterlogo.png" width="25" height="22"></a><a href="mailto:JcarRes@gmail.com"><img id="emailid" src="emaillogo.png" width="25" height="22"></a><br>
+
+ <br>
+ </footer>
+
+
+ </body>
+
+ </html>
