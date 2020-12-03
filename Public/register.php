@@ -3,7 +3,7 @@
 //  This script is used for user Signing up page.
 
 require_once('../Classes/dbClass.php');
-require_once('functions.php');
+require_once('../Private/functions.php');
 
 $db = new DB;
 
