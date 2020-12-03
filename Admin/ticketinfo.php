@@ -7,7 +7,7 @@ require_once('../Assets/adminheader.php');
 
 <table border='3' style="border:3px solid black;margin-left:auto;margin-right:auto;width: 50%; height: 10% ">
 
-    
+
 
   <tbody>
         <tr>
@@ -45,6 +45,13 @@ require_once('../Assets/adminheader.php');
           echo "<td style=text-align:center>" . $row['ticket_holder'] . "</td>";
 
           echo "<td style=text-align:center>" . $row['status'] . "</td>";
+
+          echo "<form action='../private/ticketCheck.php' method='get'>";
+
+          echo "<td style=text-align:center><input type = 'hidden' name='pin' value= '". $row['ticket_pin']  ."'>
+          <input type ='submit' name='submit' value='Valid'>
+              </form></td>";
+
           echo "</tr>";
 
           }
@@ -59,4 +66,3 @@ require_once('../Assets/adminheader.php');
       </tbody>
 </table>
 <?php include_once('../Assets/footer.php'); ?>
-
