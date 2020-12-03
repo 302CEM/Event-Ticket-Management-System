@@ -1,5 +1,8 @@
-
 <?php
+
+require_once('../Private/functions.php');
+require_once('../Classes/dbClass.php');
+require_once('../Assets/header.php');
 ?>
 <!DOCTYPE HTML>
 <html>
