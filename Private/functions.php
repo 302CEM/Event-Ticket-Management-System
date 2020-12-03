@@ -1,7 +1,7 @@
 <?php
 
 // This script is the base script for all functions that is
-// included in most pages in this projct.  
+// included in most pages in this projct.
 
 session_start();
 include_once('../Classes/dbClass.php');
@@ -22,7 +22,7 @@ function redirect_to($new_location) {
 	exit;
   }
 
- 
+
 function request_ip_matches_session() {
 	// return false if either value is not set
 	if(!isset($_SESSION['ip']) || !isset($_SERVER['REMOTE_ADDR'])) {
@@ -84,8 +84,8 @@ function is_session_valid() {
 function confirm_session_is_valid() {
 	if(!is_session_valid()) {
 		end_session();
-		// Note that header redirection requires output buffering 
-		// to be turned on or requires nothing has been output 
+		// Note that header redirection requires output buffering
+		// to be turned on or requires nothing has been output
 		// (not even whitespace).
 		header("Location: err.php");
 		exit;
@@ -113,8 +113,8 @@ function user_logged_in() {
 //function confirm_user_logged_in() {
 	//if(!user_logged_in()) {
 	//	end_session();
-		// Note that header redirection requires output buffering 
-		// to be turned on or requires nothing has been output 
+		// Note that header redirection requires output buffering
+		// to be turned on or requires nothing has been output
 		// (not even whitespace).
 	//	header("Location: err.php");
 		//exit;
@@ -127,12 +127,12 @@ function after_successful_login() {
 	// Regenerate session ID to invalidate the old one.
 	// Super important to prevent session hijacking/fixation.
 	session_regenerate_id(true);
-	
-	// Save these values in the session, even when checks aren't enabled 
 
-	
+	// Save these values in the session, even when checks aren't enabled
+
+
 }
-	
+
 function email_exists($email){
 
 	$db = new DB;
@@ -156,10 +156,10 @@ function get_user_by_id($id){
 	$userExists = ($rowcount > 0);
 	if($userExists){
 	$result =	$stmt->fetch(PDO::FETCH_ASSOC);
-		
+
 
 		$output = $result['firstName'] . " " . $result['lastName'];
-		
+
 	}
 		return $output;
 	}
@@ -172,14 +172,14 @@ function get_user_by_id($id){
 		$adminExists = ($rowcount > 0);
 		if($adminExists){
 		$result =	$stmt->fetch(PDO::FETCH_ASSOC);
-			
-	
+
+
 			$output = $result['firstName'] . " " . $result['lastName'];
-			
+
 		}
 			return $output;
 		}
-	
+
 function get_tickets_by_user_id($id){
 
 	$db = new DB;
@@ -189,14 +189,14 @@ function get_tickets_by_user_id($id){
 		$ticketExists = ($rowcount > 0);
 		if($ticketExists){
 		$result =	$stmt->fetchAll(PDO::FETCH_ASSOC);
-			
-	
+
+
 		return $result;
 
 		}
-			
+
 		}
-	
+
 
  function find_user_by_email($email){
 	$db = new DB;
@@ -206,8 +206,8 @@ function get_tickets_by_user_id($id){
 		$userExists = ($rowcount > 0);
 		if($userExists){
 		$user =	$stmt->fetch(PDO::FETCH_ASSOC);
-			
-	
+
+
 		return $user;
 
  }
@@ -222,13 +222,13 @@ function login($email, $password) {
 	$userLoggedIn = ($rowcount == 1);
 		if ($userLoggedIn) {
 		 $userId = $stmt->fetchColumn();
-		
+
 		if($userId){
 			$_SESSION['userId'] = $userId;
 			return $userId;
 	}
 }
-}            
+}
 
 
 

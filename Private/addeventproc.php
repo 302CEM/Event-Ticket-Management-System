@@ -16,14 +16,18 @@ if(isset($_POST['submit'])){
     $location = $_POST['eventLocation'];
     $price = $_POST['eventPrice'];
     $description = $_POST['eventDescription'];
+    $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 
 }
-$sql = "INSERT INTO events (event_Name, event_location, event_price, event_description)
-VALUES ('$eventName', '$location','$price', '$description')";
+$sql = "INSERT INTO events (event_Name, event_location, event_price, event_description,eventimg)
+VALUES ('$eventName', '$location','$price', '$description','$file')";
 $stmt = $db->pdo->prepare($sql);
 $stmt->execute();
-if($stmt){
-echo 'The event has been added.';}else{echo 'There was some error';}
-
-
-
+if($stmt)
+{
+echo '<script>alert("Event added successfully")</script>';
+}
+else
+{
+  echo 'There was some error';
+}

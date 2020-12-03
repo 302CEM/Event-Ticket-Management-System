@@ -23,8 +23,11 @@ class DB
 
         try {
             $this->pdo = new PDO($dsn, $this->user, $this->pass, $this->options);
-        } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int)$e->getCode());
+        } catch (PDOException $e) {
+          echo "DataBase Error: The user could not be added.<br>".$e->getMessage();
+        } catch (Exception $e) {
+          echo "General Error: The user could not be added.<br>".$e->getMessage();
         }
+        
     }
 }

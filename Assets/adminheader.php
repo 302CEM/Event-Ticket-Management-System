@@ -40,15 +40,20 @@ if(isset($_SESSION['adminId'])){
 </head>
 <body>
 
-
-<?php echo $msg; ?>
-<div id="nav">
-<ul>
-<li><a href="../Admin/addevent.php">Add event</a></li>
-<li><a href="../Admin/checkin.php">Validate ticket</a></li>
-<li><a href="../Admin/ticketinfo.php">Ticket info</a></li>
-<li><a href="../Admin/viewevent.php">Event info</a></li>
-
-
-</ul>
-</div>
+  <header>
+    <div class="main">
+      <div class="logo">
+        <img src="../pic/eventlogo2.png" alt="logo" width="150" height="80" />
+      </div><br>
+      <ul>
+        <li><a href="../Admin/addevent.php">Add event</a></li>
+        <li><a href="../Admin/checkin.php">Validate ticket</a></li>
+        <li><a href="../Admin/ticketinfo.php">Ticket info</a></li>
+        <li><a href="../Admin/viewevent.php">Event info</a></li>
+        <li><a href="../Admin/mail.php">Send Notification</a></li>
+        <li><font color="white"><b>|</b></font></li>
+        <li><?php echo $msg; ?></li>
+      </ul>
+    </div>
+  </header>
+    <div class="content">
