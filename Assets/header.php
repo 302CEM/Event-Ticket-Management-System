@@ -34,7 +34,7 @@ if(isset($_SESSION['userId'])){
 
 }elseif($fileName !== strtolower($signup) && $fileName !== strtolower($loginform)){
   $msg  = "<div id='logreg'>";
-  $msg .= "<h5><a href='register.php'>Register</a></h5>&nbsp&nbsp";
+  $msg .= "<h5><a href='signup.php'>Register</a></h5>&nbsp&nbsp";
   $msg .= "<h5><a href='loginform.php'>Login</a></h5>";
   $msg .= "</div>";
 
