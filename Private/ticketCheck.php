@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 // This script is used for checking tickets and just used on one page
@@ -10,7 +10,7 @@ $db = new DB;
 
 if(isset($_GET['pin'])){
     $pin = $_GET['pin'];
-    
+
 }
 
 
@@ -29,9 +29,9 @@ function isPin($pin)
                 if($data){
                     return TRUE;
                 }else{ return FALSE;}
-                               
+
                 }
-                
+
 }
 
 // Getting the user id for a specific pin, and returns the user id
@@ -44,13 +44,13 @@ function getUserID($pin)
         $stmt->execute();
         $rowcount = $stmt->rowCount();
         $data = ($rowcount == 1);
-        
+
         if ($data) {
             $data = $stmt->fetchColumn();
-        
+
                }
-        
- 
+
+
         return $data;
     }
 
@@ -59,12 +59,12 @@ function getUserID($pin)
 $ticketHolder = getUserID($pin);
 
 function activateAccount($id)
-{   
+{
     $pdo = $GLOBALS['db']->pdo;
     $pin = $GLOBALS['pin'];
     $ticketHolder = $GLOBALS['ticketHolder'];
 
-   
+
     $stmt = $pdo->query("UPDATE tickets SET status = 'Used' WHERE ticket_holder = $ticketHolder AND ticket_pin = $pin");
     $stmt->execute();
     if ($stmt) {
@@ -83,7 +83,7 @@ if(isPin($pin)){
     activateAccount($ticketHolder);
 
     echo "The Status has been changed";
+    echo "<br><a href='../Admin/ticketinfo.php'>Click here to return</a>";
 }else{
     echo "the provided pin does NOT exist in the database";
 }
-
