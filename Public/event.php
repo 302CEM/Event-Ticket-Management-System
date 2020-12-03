@@ -15,7 +15,7 @@ $data =  [
     "id" => (int)$eventId,
     "title" => $eventName,
     "itemPrice" => $eventPrice,
-    "qty" => 22  
+    "qty" => 22
 ];
 $formattedData = json_encode($data);
 $filename = 'data.json';
@@ -32,33 +32,39 @@ fclose($handle);
 ?>
 
 
-    
 
-    
+
+
           <?php
 $get_event_query = "SELECT * FROM events WHERE event_id={$eventId}";
 $the_event = $db->pdo->query($get_event_query)->fetch(PDO::FETCH_ASSOC);
 
 ?>
-            
+
 
     <div id="eventsection">
-                <h3>What</h3>
-                
-                <?php echo "<h5 id='event_name'>" . $the_event['event_name']. "</h5"; ?></h5>
-                <p><?php echo $the_event['event_description']; ?></p><br />
-                <?php echo "<h4 id='event_price'>" . "Costs: " . $the_event['event_price']; ?> 
-                <h3>Where</h3>
+                <h3>Event Overall Information :</h3>
+
+                <p>Event Name : <?php echo $the_event['event_name']; ?> </p>
+                <p>Event Description : <?php echo $the_event['event_description']; ?></p>
+                <p>Event Price : <?php echo $the_event['event_price']; ?></p>
+                <p>Event Location :
                 <?php
-              
+
                     $location_query = "SELECT event_location FROM events WHERE event_id = $eventId";
                     $location_result = $db->pdo->query($location_query)->fetchColumn();
                     $location = $location_result;
-                    echo "<h4>  $location </h4>";
+                    echo "  $location ";
                 ?>
+              </p>
+              <p>
+                Event Image Reference:
+                <?php
+                  echo '<img src="data:image/jpeg;base64,' . base64_encode($the_event['eventimg']) . '" height="80px" width="150px"/>';										?>
+              </p>
                  <br />
-                
-                
+
+
                 </form>
             </div>
     	</div>
@@ -69,14 +75,14 @@ $the_event = $db->pdo->query($get_event_query)->fetch(PDO::FETCH_ASSOC);
         <main>
         <section id="products"></section>
         <section id="cart">
-        
+
         <div id="formend"></div>
-    </main>    
-    
+    </main>
+
     		<div class="row">
     			<div class="col l6 s12">
     			</div>
-				
+
 			</div>
 		</div>
 	</footer>
@@ -87,20 +93,20 @@ var qty = '';
     const CART = {
             KEY: 'Localhost',
             contents: [],
-            
+
             init(){
                 let _contents = localStorage.getItem(CART.KEY);
-   
+
                 if(_contents){
                     CART.contents = JSON.parse(_contents);
-              
+
                 }
-                
+
             },
             async sync(){
                 let _cart = JSON.stringify(CART.contents);
                 await localStorage.setItem(CART.KEY, _cart);
-                
+
             },
             find(id){
                 let match = CART.contents.filter(item=>{
@@ -127,8 +133,8 @@ var qty = '';
                         CART.sync();
                             let data = true;
                             return data;
-                        
-                    
+
+
                     }else{
                         console.error('Invalid Product');
                     }
@@ -176,22 +182,22 @@ var qty = '';
                     }
                 });
                 return sorted;
-                
+
             },
             logContents(prefix){
                 console.log(prefix, CART.contents)
             }
         };
-        
+
         document.addEventListener('DOMContentLoaded', ()=>{
-            
+
             getProducts( showProducts, errorMessage );
-            
+
             CART.init();
-            
+
             showCart();
         });
-        
+
      function showCart(){
         let PRODUCTS = JSON.parse(<?php echo json_encode($formattedData);?>);
 
@@ -202,63 +208,63 @@ var qty = '';
         shopcart.className = 'shopcart';
         shopcart.innerText = "Your Items";
         cartSection.appendChild(shopcart);
-        
-        
+
+
             let form = document.createElement('form');
             form.action = "../Private/tickets.php";
             form.method = "post";
             cartSection.appendChild(form);
-        
+
 
             let s = CART.sort('qty');
             s.forEach( item =>{
                 let cartitem = document.createElement('div');
                 cartitem.className = 'cart-item';
-                
+
                 let title = document.createElement('h3');
                 title.textContent = item.title;
                 title.className = 'title';
                 cartitem.appendChild(title);
 
-                
+
                 let controls = document.createElement('div');
                 controls.className = 'controls';
                 cartitem.appendChild(controls);
-                
+
                 let plus = document.createElement('span');
                 plus.textContent = '+';
                 plus.setAttribute('data-id', item.id)
                 controls.appendChild(plus);
                 plus.addEventListener('click', incrementCart)
-                
+
                 let qty = document.createElement('span');
                 qty.textContent = item.qty;
                 controls.appendChild(qty);
-                
+
                 let minus = document.createElement('span');
                 minus.textContent = '-';
                 minus.setAttribute('data-id', item.id)
                 controls.appendChild(minus);
                 minus.addEventListener('click', decrementCart)
-                
+
                 let price = document.createElement('div');
                 price.className = 'price';
                 price.textContent = item.itemPrice;
-                
+
                 let cost = (item.qty * item.itemPrice);
                 price.textContent = cost;
                 cartitem.appendChild(price);
-                
+
                 cartSection.appendChild(cartitem);
-                
+
                 input1 = document.createElement('input');
                 input1.type = "hidden";
                 input1.name = 'option[' +item.id + ']';
                 input1.id = 'itemID';
                 input1.value =  item.qty;
                 form.appendChild(input1);
-              
-          
+
+
             })
             let button = document.createElement('input');
             button.type = 'submit';
@@ -266,7 +272,7 @@ var qty = '';
             button.value = 'CheckOut';
             button.className = 'checkout';
             form.appendChild(button);
-           
+
         }
         function incrementCart(ev){
             ev.preventDefault();
@@ -281,7 +287,7 @@ var qty = '';
                 document.getElementById('cart').removeChild(controls.parentElement);
             }
         }
-        
+
         function decrementCart(ev){
             ev.preventDefault();
             let id = parseInt(ev.target.getAttribute('data-id'));
@@ -296,7 +302,7 @@ var qty = '';
                 getElementById('cart').removeChild(controls.parentElement);
             }
         }
-        
+
         function getProducts(success, failure){
             const URL = "data.json";
             fetch(URL, {
@@ -310,7 +316,7 @@ var qty = '';
             });
         }
         function showProducts( product ){
-            
+
             let PRODUCTS = product;
 
             let productSection = document.getElementById('products');
@@ -319,7 +325,7 @@ var qty = '';
             productSection.innerHTML = "";
             let card = document.createElement('div');
             card.className = 'card';
-            
+
             let btn = document.createElement('button');
             btn.className = 'addtocart';
             btn.textContent = 'Add to cart';
@@ -327,9 +333,9 @@ var qty = '';
             btn.addEventListener('click', addItem);
             eventSection.appendChild(btn);
             productSection.appendChild(card);
-            
+
         }
-        
+
         function addItem(ev){
             ev.preventDefault();
             let id = parseInt(ev.target.getAttribute('data-id'));
@@ -337,11 +343,11 @@ var qty = '';
             CART.add(id, 1);
             showCart();
         }
-        
+
         function errorMessage(err){
             console.error(err);
         }
-        
-        
+
+
         </script>
 </html>

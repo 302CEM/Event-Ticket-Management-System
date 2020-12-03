@@ -11,13 +11,13 @@ if(isset($_SESSION['adminId'])) {
 unset($_SESSION['adminId']);
 session_destroy();
 
-header("Location: ../Admin/admin.php");
+header("Location: ../Public/HomePage.php");
 exit;
 
 }elseif(isset($_SESSION['userId'])){
     unset($_SESSION['userId']);
     session_destroy();
-    
+
     header("Location: ../Public/loginform.php");
     exit;
 }else{
